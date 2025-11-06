@@ -32,6 +32,4 @@
  
   <br/>
   
-  
-[![Velog's GitHub stats](https://velog-readme-stats.vercel.app/api?name=fpdlswj81)](https://github.com/eungyeole/velog-readme-stats)
 </div>
