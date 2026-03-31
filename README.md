@@ -8,7 +8,7 @@
 I design and build **RAG, search, and LLM serving systems** using FastAPI, Qdrant, and Triton/vLLM.  
 With a strong backend foundation, I’ve expanded into **AI engineering (serving · retrieval · operations)** in production environments.
 
-[Blog / Notes](https://www.notion.so/JusengLee-1753a475fe0080a3b62eef1af1688e19?source=copy_link)
+[Blog](https://www.notion.so/JusengLee-1753a475fe0080a3b62eef1af1688e19?source=copy_link)
 
 ---
 
