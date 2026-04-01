@@ -1,7 +1,6 @@
 # 모두의 R&D 질의의도 분석 및 분류 시스템
 
 > **Project Type**: LLM Serving / AI Backend / Intent Analysis  
-> **Period**: 2025.05 ~ 2025.07 *(구축)* / 2025.07 ~ 2025.09 *(운영·개선)*  
 > **Role**: LLM Server Engineer  
 > **Disclosure**: 일부 비공개
 
