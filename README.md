@@ -1,44 +1,75 @@
 <p align="right">
-  <a href="./README.ko.md">한국어</a> | <strong>English</strong>
+  <strong>English</strong> | <a href="./README.ko.md">한국어</a>
 </p>
 
-# Hi, I'm Seungju Lee 👋
+# Seungju Lee 👋
 
-**LLM Serving & RAG Systems Engineer**  
-I design and build **RAG, search, and LLM serving systems** using FastAPI, Qdrant, and Triton/vLLM.  
-With a strong backend foundation, I’ve expanded into **AI engineering (serving · retrieval · operations)** in production environments.
+**LLM Serving & RAG Systems Engineer**
 
-[Blog](https://www.notion.so/JusengLee-1753a475fe0080a3b62eef1af1688e19?source=copy_link)
+I design and ship **RAG, retrieval, and LLM serving systems** with FastAPI, Qdrant, Triton/vLLM, and on-prem GPU environments.  
+With a strong backend foundation, I have expanded into **AI engineering (serving · retrieval · operations)** and focus on building systems that are not only accurate, but also explainable and operable in production.
+
+[Blog / Notes](https://www.notion.so/JusengLee-1753a475fe0080a3b62eef1af1688e19?source=copy_link)
 
 ---
 
 ## About
 
-- I design, implement, and operate **domain-specific RAG search systems** and **LLM serving infrastructure**.
-- I focus on optimizing **retrieval quality**, **response latency (including TTFT)**, and **operational reliability** from a service perspective.
-- My interests include **LLM Serving**, **Hybrid Retrieval**, **AI Backend**, **Data Pipelines**, and **Observability**.
+- I build **domain-specific RAG systems** and **LLM serving infrastructure**.
+- I care about **retrieval quality, response latency, and operational reliability** together.
+- My main interests are **LLM Serving, Hybrid Retrieval, AI Backend, Data Pipelines, and Observability**.
 
 ---
 
-## Focus Areas
+## Featured Case Studies
 
-### LLM Serving & Retrieval
-- LLM serving with **Triton Inference Server / vLLM** (including on-prem GPU environments)
-- **Qdrant-based hybrid retrieval** (Dense + Sparse / BM25)
-- RAG pipeline design and re-ranking (**Reranking / RRF**)
-- Large-context handling and inference performance optimization (**TTFT / throughput / memory**)
+### 1. NTIS AI Chatbot — Search Engine-Grade RAG
+A domain RAG system for national R&D information that evolved from a simple chatbot into a **search-engine-style retrieval architecture**.  
+Key themes: **SEARCH / LOOKUP / JOIN**, planner–contract–executor design, hybrid retrieval, reranking, SSE responses, and evidence-driven answers.  
+→ [Read the case study](./case-studies/ntis-rag-chatbot.md)
 
-### AI Backend & Data Pipelines
-- AI backend and REST API development with **FastAPI**
-- Streaming APIs / **SSE** response handling
-- Oracle → Embedding → Vector DB ingestion pipelines (incremental load / checkpointing / parallel embedding)
-- Service integration with **Redis-based state management**
+### 2. Everyone’s R&D — Intent Analysis & Classification
+An LLM-powered system that converts free-form user feedback into **corrected text, structured summaries, and topic classifications**.  
+Built for an on-prem serving environment with **Gemma 3, Triton, multi-model orchestration, and API integration**.  
+→ [Read the case study](./case-studies/everyones-rnd-intent-classification.md)
 
-### Infrastructure & Observability
-- Service deployment and operations with **Docker / Linux**
-- Monitoring with **Prometheus / Grafana**
-- Bottleneck analysis using GPU metrics and performance diagnostics
-- Incident investigation and stabilization based on operational logs
+### 3. Oracle → Embedding → Vector DB Pipeline
+A production-oriented ingestion pipeline that turns Oracle-based source data into vector-search-ready assets.  
+Key themes: preprocessing, checkpointing, incremental loads, embedding evaluation, and stable Qdrant ingestion.  
+→ [Read the case study](./case-studies/oracle-to-qdrant-pipeline.md)
+
+### 4. Scholarly OA AI Summarization
+An AI summarization feature built for a large-scale scholarly platform handling roughly **400,000 papers**.  
+Key themes: GPU inference setup, FastAPI integration, result persistence, request control, and product-level rollout.  
+→ [Read the case study](./case-studies/scholarly-ai-summarization.md)
+
+---
+
+## Public Repositories
+
+### RAG / Retrieval
+- [llm_article_rag_test](https://github.com/jusenglee/llm_article_rag_test)  
+  Experiments around RAG structure, retrieval quality, and reranking ideas.  
+  → [Project note](./projects/llm_article_rag_test.md)
+
+### Document Processing
+- [PDF_Extraction_Web](https://github.com/jusenglee/PDF_Extraction_Web)  
+  A web-based experiment around PDF extraction and document-processing workflows.  
+  → [Project note](./projects/PDF_Extraction_Web.md)
+
+### Data Pipeline
+- [oracle_to_qdrant__pipe](https://github.com/jusenglee/oracle_to_qdrant__pipe)  
+  Oracle preprocessing, embedding, and vector DB ingestion pipeline implementation.  
+  → [Project note](./projects/oracle_to_qdrant__pipe.md)
+
+---
+
+## Shared Notes
+
+- [Architecture](./docs/architecture.md)
+- [Benchmarks & Public Metrics](./docs/benchmarks.md)
+- [Contracts & Design Rules](./docs/contracts.md)
+- [Runbook & Operations Notes](./docs/runbook.md)
 
 ---
 
@@ -48,65 +79,30 @@ With a strong backend foundation, I’ve expanded into **AI engineering (serving
 - **Backend / API**: FastAPI, Spring Boot, REST API, SSE
 - **LLM / Retrieval**: Triton Inference Server, vLLM, Qdrant, LangChain, LangGraph
 - **Data / Infra**: Oracle, Redis, Docker, Linux
-- **Observability**: Prometheus, Grafana
+- **Observability**: Prometheus, Grafana, structured logs, quality gates
 
 ---
 
-## Public Repositories
+## What I Care About
 
-> Some core projects cannot be open-sourced due to company security policies.  
-> Instead, I share public experimental repositories and case studies summarizing architecture, roles, and technical contributions from production work.
-
-### RAG / Retrieval
-- [llm_article_rag_test](https://github.com/jusenglee/llm_article_rag_test)  
-  RAG experiments, retrieval quality evaluation, and re-ranking ideas
-
-### Document Processing
-- [PDF_Extraction_Web](https://github.com/jusenglee/PDF_Extraction_Web)  
-  PDF extraction/processing workflows and web-based document processing experiments
-
-### Data Pipeline
-- [oracle_to_qdrant__pipe](https://github.com/jusenglee/oracle_to_qdrant__pipe)  
-  Oracle preprocessing, embedding, and vector DB ingestion pipeline implementation
+- Reliable LLM serving infrastructure
+- Domain-specific retrieval quality
+- GPU inference performance tuning
+- Monitoring, observability, and incident response in production
 
 ---
 
-## Selected Projects (incl. private)
+## Repository Structure
 
-### Domain RAG Search & Q&A System for National R&D Data *(Private / Company Project)*
-- Designed and implemented a domain-specific RAG search and Q&A system for national R&D information
-- Built a retrieval architecture with explicit **SEARCH / LOOKUP / JOIN** strategy separation
-- Implemented Qdrant-based hybrid retrieval and re-ranking logic
-- Delivered a production AI backend integrating **FastAPI, LangGraph, Triton/vLLM, and Redis**
-- Improved performance and reliability with a focus on retrieval quality, latency, and operational stability
+```text
+portfolio/
+├─ README.md
+├─ README.ko.md
+├─ assets/
+├─ case-studies/
+├─ docs/
+└─ projects/
+```
 
-### “Everyone’s R&D” Intent Analysis & Classification System *(Partially Private)*
-- Designed and implemented an **LLM-based intent analysis and classification pipeline** for user posts/queries
-- Built multi-model inference orchestration and serving on an on-prem **H100 (2 GPU)** environment (including **Gemma 3**)
-- Implemented an end-to-end API flow from request input → analysis → structured results for service integration
-- Refactored server structure for operational reliability and iterated on **prompts / pipeline / serving** to improve consistency and stability
-
-### Oracle → Embedding → Vector DB Ingestion Pipeline *(Private / Company Project)*
-- Designed and implemented preprocessing, embedding, and vector DB ingestion pipelines from Oracle data sources
-- Delivered incremental ingestion with checkpoint management, embedding parallelization, and ingestion stability improvements
-- Established an operational foundation for large-scale document/metadata indexing automation
-
-### AI Abstract Summarization Feature for Scholarly Data Platform *(Private / Company Project)*
-- Designed and integrated AI abstract summarization into a large-scale scholarly content platform
-- Implemented LLM API integration, result persistence, request control, and operational logging
-- Gained productization-level experience by integrating AI features into an existing backend service
-
----
-
-## Interests
-
-- Building reliable LLM serving infrastructure (including on-prem/container operations)
-- Improving domain-specific retrieval quality (Hybrid Retrieval + Re-ranking)
-- Measuring and optimizing GPU inference performance (TTFT / throughput / memory)
-- Monitoring, observability, and incident response in production environments
-
----
-
-<p align="center">
-  Thanks for visiting!
-</p>
+> Some source code and internal artifacts cannot be shared due to company security policies.  
+> This repository focuses on **architecture, decisions, evidence, and technical contribution** rather than confidential implementation details.
