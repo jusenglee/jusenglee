@@ -69,12 +69,12 @@
 그래서 결과를 자유 텍스트가 아니라 **교정 / 구조화 요약 / 분류** 단계로 나누고, 각 단계의 역할을 명확히 나누는 쪽으로 설계했습니다.
 
 ## 4.2 복수 모델 기반 추론 오케스트레이션
-프로젝트 설명대로 온프레미스 **H100 2GPU 환경**에서 **Gemma 3를 포함한 복수 모델 기반 추론 오케스트레이션**을 설계했습니다.  
+테스트환경에서는 온프레미스 **H100 2GPU 환경**에서 **Gemma 3를 포함한 복수 모델 기반 추론 오케스트레이션**을 설계했습니다.  
 모델 하나에만 묶이지 않도록 하고, 향후 품질 비교·교체·확장 가능성을 고려해 서빙 구조를 분리했습니다.
 
 ## 4.3 Triton 중심의 운영형 서빙 구조
 모델 서빙은 Triton Inference Server를 중심으로 구성했습니다.  
-관련 운영 문서에는 Gemma3 GGUF 모델을 Triton Python backend에서 서빙하기 위한 model repository 구조, `config.pbtxt`, `model.py`, dynamic batching, Docker/Jupyter 기반 운영 흐름, logs/metrics 관리 방식이 정리되어 있습니다. 이 구조는 단순 실험용이 아니라 **재시작·업데이트·로그 추적이 가능한 운영형 구조**를 지향했습니다.
+관련 테스트 운영 문서에는 Gemma3 GGUF 모델을 Triton Python backend에서 서빙하기 위한 model repository 구조, `config.pbtxt`, `model.py`, dynamic batching, Docker/Jupyter 기반 운영 흐름, logs/metrics 관리 방식이 정리되어 있습니다. 이 구조는 단순 실험용이 아니라 **재시작·업데이트·로그 추적이 가능한 운영형 구조**를 지향했습니다.
 
 ## 4.4 서비스 연계를 위한 E2E API 흐름
 질의 입력부터 분석 결과 반환까지를 서비스와 바로 연결할 수 있도록, 입력 → 추론 → 결과 반환 흐름을 API로 묶었습니다.  
