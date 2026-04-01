@@ -13,7 +13,7 @@
   * 프롬프트 길이에 따른 TTFT 병목 프로파일링.
 * **[NTIS RAG System: Contract-based Architecture](./projects/ntis-rag-system.md)**
   * 의도 분류(Planner)와 검색 모드 분리를 통해 신뢰할 수 있는 답변을 생성하는 사내 RAG 챗봇 구축.
-* **[Scholarly AI Pipeline (400k+ Documents)](./projects/scholarly-ai-pipeline.md)**
+* **[Scholarly AI Pipeline (400k+ Documents)](./projects/scholarly-ai-summarization.md)**
   * 40만 건 이상의 논문 데이터를 처리하는 배치 파이프라인 구축 및 Result Store(캐싱) 도입을 통한 인프라 비용 절감.
-* **[Oracle to Qdrant Migration](./projects/oracle-to-qdrant.md)**
+* **[Oracle to Qdrant Migration](./projects/oracle-to-qdrant-pipeline.md)**
   * 레거시 RDBMS(Oracle)에서 Vector DB(Qdrant)로의 데이터 동기화 파이프라인 구축.
