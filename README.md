@@ -1,6 +1,6 @@
 # AI Backend & Serving Engineer Portfolio
 
-정확할 뿐만 아니라 **설명 가능(Explainable)**하고, 고성능 하드웨어의 자원을 한계까지 활용하여 **안정적으로 운영 가능(Operable)**한 AI 시스템을 설계합니다. 단순한 LLM API 연동을 넘어, GPU VRAM 최적화부터 프롬프트 파이프라인의 에러 핸들링까지 프로덕션 레벨의 챌린지를 해결하는 데 집중합니다.
+정확할 뿐만 아니라 설명 가능(Explainable)하고, 고성능 하드웨어의 자원을 한계까지 활용하여 안정적으로 운영 가능(Operable)한 AI 시스템을 설계합니다. 단순한 LLM API 연동을 넘어, GPU VRAM 최적화부터 프롬프트 파이프라인의 에러 핸들링까지 프로덕션 레벨의 챌린지를 해결하는 데 집중합니다.
 
 ## 💡 Engineering Principles
 1. **Fail-close over Silent Rewrite:** 할루시네이션을 막기 위해 LLM이 억지로 답을 지어내게 두지 않습니다. 파이프라인 단계별로 'Contract(계약)'를 설정하여 조건을 만족하지 못하면 명시적으로 실패(Fail-close)하도록 설계합니다.
