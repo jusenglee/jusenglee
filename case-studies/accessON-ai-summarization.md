@@ -1,4 +1,4 @@
-# Scholarly OA AI Summarization
+# AccessON Scholarly OA AI Summarization
 
 > **Confidentiality Note**  
 > 본 문서는 회사 보안 정책을 준수하는 범위에서, 공개 가능한 역할과 구현 범위만 정리한 포트폴리오용 케이스 스터디입니다.
