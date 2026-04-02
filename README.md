@@ -83,10 +83,12 @@ KISTI 주관 학술·국가 R&D 데이터 플랫폼을 개발·운영하며, 레
 ### Oracle → Embedding → Vector DB Pipeline
 Oracle 기반 원천 데이터를 전처리 → 임베딩 → Vector DB 적재까지 연결하는 운영형 파이프라인을 설계·구현했습니다.  
 핵심은 **증분 적재, 체크포인트, 실패 복구, 임베딩 모델 비교 평가**였습니다.
+[상세 케이스 스터디 보기](./case-studies/oracle-to-pipeline.md)
 
 ### Scholarly OA AI Summarization
 약 **40만 건 규모 논문 데이터**를 대상으로 AI 초록 요약 기능을 설계·적용했습니다.  
 GPU 추론 환경 구성, FastAPI 연동, 결과 저장, 요청 제어, 플랫폼 연계를 포함해 **실험이 아닌 서비스 기능**으로 연결했습니다.
+[상세 케이스 스터디 보기](./case-studies/accessON-ai-summarization.md)
 
 ---
 
