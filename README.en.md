@@ -50,7 +50,7 @@ A domain chatbot for national R&D information that evolved from a simple RAG pro
 
 [Read the full case study](./case-studies/ntis-rag-chatbot.md)
 
-<img src="./assets/ntis/ntis-overall-architecture.png" alt="NTIS Architecture" width="780" />
+<img src="assets/R&D/R&D-overall-architecture.png" alt="NTIS Architecture" width="780" />
 
 ---
 
@@ -74,7 +74,7 @@ An LLM system that transforms free-form user feedback into **corrected text, str
 
 [Read the full case study](./case-studies/everyones-rnd-intent-classification.md)
 
-<img src="./assets/ntis/ntis-overall-architecture.svg" alt="NTIS Architecture" width="780" />
+<img src="assets/R&D/R&D-overall-architecture.svg" alt="NTIS Architecture" width="780" />
 
 ---
 
