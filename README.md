@@ -48,13 +48,13 @@ KISTI 주관 학술·국가 R&D 데이터 플랫폼을 개발·운영하며, 레
 - 전체 파이프라인 평균 **5.3초 / 질의**
 - 임베딩 비교 기준: `multilingual-e5-large`가 `bge-m3` 대비 처리량 우세
 
-[상세 케이스 스터디 보기](./case-studies/ntis-rag-chatbot.md)
+[상세 케이스 스터디 보기](./case-studies/R&D-rag-chatbot.md)
 
-<img src="./assets/ntis/ntis-overall-architecture.svg" alt="NTIS Architecture" width="780" h />
+<img src="./assets/R&D/R&D-overall-architecture.svg" alt="R&D Architecture" width="780" h />
 
 ---
 
-### 2) R&D 사업 질의의도 분석 및 분류 시스템
+### 2) 모두의 R&D 사업 질의의도 분석 및 분류 시스템
 자유 형식 사용자 의견을 **교정 → 구조화 요약 → 주제 분류**로 변환하는 LLM 시스템입니다.
 
 **왜 중요했나**
