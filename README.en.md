@@ -74,7 +74,7 @@ An LLM system that transforms free-form user feedback into **corrected text, str
 
 [Read the full case study](./case-studies/everyones-rnd-intent-classification.md)
 
-<img src="./assets/everyones-rnd/everyones-rnd-overall-architecture.png" alt="Everyone's R&D Architecture" width="780" />
+<img src="./assets/ntis/ntis-overall-architecture.svg" alt="NTIS Architecture" width="780" />
 
 ---
 
@@ -83,10 +83,12 @@ An LLM system that transforms free-form user feedback into **corrected text, str
 ### Oracle → Embedding → Vector DB Pipeline
 A production-oriented ingestion pipeline that converts Oracle-based source data into vector-search-ready assets.  
 The key themes were **incremental ingestion, checkpointing, retry / recovery, and embedding model evaluation**.
+[Read the full case study](./case-studies/oracle-to-qdrant-pipeline.md)
 
 ### Scholarly OA AI Summarization
 An AI summarization feature built for a scholarly platform covering roughly **400,000 papers**.  
 This work connected GPU inference, FastAPI integration, result persistence, request control, and platform integration into a real product feature.
+[Read the full case study](./case-studies/accessON-ai-summarization.md)
 
 ---
 
