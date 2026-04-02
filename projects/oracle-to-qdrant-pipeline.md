@@ -3,7 +3,7 @@
 검색 오염을 방지하고 데이터의 신뢰성을 보장하기 위해, 엄격한 'Contract(계약)' 검증 기반으로 동작하는 사내 RAG 질의응답 시스템을 설계 및 구축했습니다.
 
 ## 1. Background & Challenge: 컨텍스트 길이 병목과 할루시네이션 제어
-[LLM 서빙 및 인프라 최적화](../infrastructure/llm-serving-optimization.md) 지표에서 확인된 바와 같이, 검색된 대량의 문서를 LLM 컨텍스트로 일괄 주입할 경우 심각한 응답 지연(TTFT)과 할루시네이션(Hallucination) 리스크가 동반됩니다. 이를 해결하기 위해 시스템의 ** 설명 가능성(Explainability) **을 확보하고, 비정상 요청 시 ** 안전하게 차단(Fail-close) **하도록 아키텍처를 재설계해야 했습니다.
+[LLM 서빙 및 인프라 최적화](../infrastructure/llm-serving-optimization.md) 지표에서 확인된 바와 같이, 검색된 대량의 문서를 LLM 컨텍스트로 일괄 주입할 경우 심각한 응답 지연(TTFT)과 할루시네이션(Hallucination) 리스크가 동반됩니다. 이를 해결하기 위해 시스템의 설명 가능성(Explainability)을 확보하고, 비정상 요청 시 안전하게 차단(Fail-close)하도록 아키텍처를 재설계해야 했습니다.
 
 ## 2. System Architecture: Planner-Contract-Executor Pattern
 LLM을 단순한 텍스트 생성기가 아닌, 전체 워크플로우의 실행 전략을 수립하는 **라우터(Router)**로 활용합니다.
