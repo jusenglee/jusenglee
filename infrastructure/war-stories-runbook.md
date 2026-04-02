@@ -12,6 +12,29 @@
 * **Issue**: 서비스 오픈 직후, 네트워크 페이로드를 임의로 변조하여 서비스 목적과 무관한 프롬프트를 주입하는 취약점이 발견되었습니다. 이로 인해 고비용의 사내 GPU 자원이 무단으로 소모되는 어뷰징 사태가 발생했습니다.
 * **Resolution**: API 게이트웨이 레벨의 단순 차단을 넘어, 백엔드 아키텍처를 전면 개편했습니다. 클라이언트의 입력을 절대적으로 신뢰하지 않는 구조를 채택하고, 백엔드에 **'Contract Layer(사전 검증 계층)'**를 신설했습니다. 시스템이 정의한 의도(Intent) 및 허용 규격과 일치하지 않는 요청은 조용히 우회하지 않고 **즉각적으로 요청을 차단(Fail-close)**하도록 조치하여 자원 오남용을 원천적으로 해결했습니다.
 
+```mermaid
+sequenceDiagram
+    participant C as Client (Front-end)
+    participant API as API Gateway
+    participant Contract as Contract Layer (Backend)
+    participant LLM as Triton Server (GPU)
+
+    C->>API: 1. Request (Prompt & Params)
+    API->>Contract: 2. Route Payload
+    
+    rect rgb(255, 230, 230)
+        Note over Contract: [Validation Failed]<br/>Intent Mismatch or Invalid Params
+        Contract-->>C: 3. Fail-close (HTTP 400 / 403)
+    end
+    
+    rect rgb(230, 255, 230)
+        Note over Contract: [Validation Passed]<br/>Strict Schema Match
+        Contract->>LLM: 4. Execute Inference
+        LLM-->>Contract: 5. Stream Output
+        Contract-->>C: 6. Response
+    end
+```
+
 ---
 
 ## 2. 피크 트래픽 시 서빙 타임아웃 해결 및 처리량(Throughput) 극대화
@@ -33,3 +56,25 @@
 * **Issue**: 분산 추론 환경 구성 후, 잦은 통신 에러가 발생하거나 정상 구동 시에도 **단일 GPU보다 오히려 추론 속도가 심각하게 저하**되는 성능 역전 현상을 겪었습니다.
 * **Root Cause & Resolution**: 소프트웨어 설정 오류가 아님을 직감하고 NCCL(통신 라이브러리) 로그 및 서버 하드웨어 토폴로지를 분석했습니다. 원인은 서버 메인보드의 **PCIe 보안 기능인 ACS(Access Control Services)가 활성화**되어 있어, GPU 간의 직접 통신(P2P)이 차단되고 모든 데이터가 CPU를 강제로 경유하며 심각한 병목을 유발한 것이었습니다.
 * **Outcome**: BIOS 및 Linux OS 레벨에서 ACS 설정을 튜닝(비활성화)하여 GPU 간 직접 통신 채널을 확보했습니다. 이를 통해 통신 오버헤드를 완전히 제거하고 다중 GPU 기반의 거대 모델 서빙 환경을 성공적으로 구축했습니다.
+
+```mermaid
+flowchart TD
+    subgraph "Before (ACS Enabled - Bottleneck)"
+        CPU1[CPU / PCIe Root Complex]
+        GPU1a[GPU 0 (A40)]
+        GPU1b[GPU 1 (A40)]
+        GPU1a -- "Blocked" --x GPU1b
+        GPU1a -->|Data| CPU1
+        CPU1 -->|Data| GPU1b
+        style CPU1 fill:#ffcccc,stroke:#ff0000,stroke-width:2px
+    end
+
+    subgraph "After (ACS Disabled - P2P Active)"
+        CPU2[CPU / PCIe Root Complex]
+        GPU2a[GPU 0 (A40)]
+        GPU2b[GPU 1 (A40)]
+        GPU2a <-->|P2P Direct Comm| GPU2b
+        style GPU2a fill:#ccffcc,stroke:#00cc00
+        style GPU2b fill:#ccffcc,stroke:#00cc00
+    end
+```
