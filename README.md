@@ -50,7 +50,7 @@ KISTI 주관 학술·국가 R&D 데이터 플랫폼을 개발·운영하며, 레
 
 [상세 케이스 스터디 보기](./case-studies/R&D-rag-chatbot.md)
 
-<img src="./assets/R&D/R&D-overall-architecture.svg" alt="R&D Architecture" width="780" h />
+<img src="assets/R&D-overall-architecture.svg" alt="R&D Architecture" width="780" h />
 
 ---
 
@@ -74,7 +74,7 @@ KISTI 주관 학술·국가 R&D 데이터 플랫폼을 개발·운영하며, 레
 
 [상세 케이스 스터디 보기](./case-studies/everyones-rnd-intent-classification.md)
 
-<img src="./assets/everyones-rnd/everyones-rnd-overall-architecture.png" alt="Everyone's R&D Architecture" width="780" />
+<img src="./assets/everyones-rnd-overall-architecture.png" alt="Everyone's R&D Architecture" width="780" />
 
 ---
 
