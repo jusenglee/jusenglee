@@ -8,6 +8,24 @@
 ## 2. System Architecture: Planner-Contract-Executor Pattern
 LLM을 단순한 텍스트 생성기가 아닌, 전체 워크플로우의 실행 전략을 수립하는 **라우터(Router)**로 활용합니다.
 
+```mermaid
+graph TD
+    User((사용자 질의)) --> Planner[Intent Planner<br/>질의 해석 및 전략 수립]
+    Planner -->|Strategy Payload| Contract{Contract Layer<br/>파라미터 검증}
+    
+    subgraph "Fail-close Mechanism"
+    Contract -->|Invalid| Error[명시적 에러 반환<br/>Fail-close]
+    end
+    
+    subgraph "Execution Flow"
+    Contract -->|Valid| Executor[Executor<br/>전략 실행]
+    Executor --> Search[Retrieval<br/>SEARCH / LOOKUP / JOIN]
+    Search --> Gen[Generator<br/>답변 생성]
+    end
+    
+    Gen --> Final((최종 응답))
+```
+
 1. **Intent Planner (의도 분석):** 사용자의 질의를 분석하여 `SEARCH`, `LOOKUP`, `JOIN` 세 가지 검색 모드 중 최적의 전략을 결정합니다.
 2. **Contract Layer (계약 검증):** Planner가 도출한 파라미터의 정합성을 시스템 엣지에서 검사합니다.
    * *Troubleshooting Point:* "특정 연구자의 과제를 찾아줘"라는 질의에 필수 엔티티(이름)가 누락된 경우, 시스템은 불완전한 검색을 강행하지 않고(Silent Rewrite 우회 방지) 명시적으로 예외를 반환하여 데이터 오염을 차단합니다.
@@ -16,12 +34,17 @@ LLM을 단순한 텍스트 생성기가 아닌, 전체 워크플로우의 실행
 ## 3. Retrieval Strategy: 검색 모드 분리를 통한 리소스 최적화
 모든 질의에 획일적인 벡터 검색(Vector Search)을 수행하는 비효율을 제거했습니다.
 
+![NTIS Retrieval Modes](../assets/ntis/ntis-retrieval-modes.png)
+
 * **SEARCH (Recall 지향):** "해안 관련 과제 목록" 등 폭넓은 주제 탐색이 필요할 때 Vector Similarity 기반의 하이브리드 검색을 수행합니다.
 * **LOOKUP (Precision 지향):** "특정인이 참여한 과제" 등 명확한 조건이 주어졌을 때, Qdrant의 메타데이터 필터링(Must, Should)을 활용하여 100%의 정확도를 보장합니다.
 * **JOIN (Relational 지향):** 과제와 성과 등 데이터 간 복합적인 관계망 추적이 필요할 때 사용합니다.
 
-![Retrieval Modes](../ntis-retrieval-modes.png)
+## 4. Ingest to Serving Pipeline
+데이터 수집부터 임베딩, 서빙까지 이어지는 전체 파이프라인의 구조는 다음과 같습니다.
 
-## 4. Outcomes
+![NTIS Ingest-Retrieval-Serving](../assets/ntis/ntis-ingest-retrieval-serving.png)
+
+## 5. Outcomes
 * **정형 데이터(Structured Output) 기반 서비스 연동:** LLM의 최종 출력을 단순한 자연어 텍스트가 아닌 JSON 포맷의 메타데이터로 구조화하여, 프론트엔드 및 타 비즈니스 로직에서 즉시 파싱하고 연동할 수 있도록 구현했습니다.
 * **응답 지연(TTFT) 최적화:** 질의 의도와 무관한 문서의 무분별한 컨텍스트 주입을 원천 차단하여 토큰 낭비를 방지하고, LLM 서빙 단계의 응답 속도를 효과적으로 통제했습니다.
