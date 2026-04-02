@@ -1,4 +1,4 @@
-# NTIS AI Chatbot — Search Engine-Grade RAG for National R&D Information
+# R&D AI Chatbot — Search Engine-Grade RAG for National R&D Information
 
 > **Confidentiality Note**  
 > 본 문서는 회사 보안 정책을 준수하는 범위에서, 공개 가능한 설계 의사결정·운영 관점·시험 결과만 정리한 포트폴리오용 케이스 스터디입니다.  
